@@ -1,122 +1,124 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([
+    {
+      text: "Hi! I'm your Baby Girl AI 😊",
+      sender: "bot",
+    },
+  ]);
+  const [loading, setLoading] = useState(false);
+
+  const sendMessage = async () => {
+    if (!message.trim()) return;
+
+    const currentMessage = message;
+
+    setMessages((prev) => [
+      ...prev,
+      { text: currentMessage, sender: "user" },
+    ]);
+
+    setMessage("");
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
+            "Content-Type": "application/json",
+            "HTTP-Referer": "http://localhost:5173",
+            "X-Title": "Baby Girl Chatbot",
+          },
+          body: JSON.stringify({
+            model: "deepseek/deepseek-chat-v3.1",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You are a cute, friendly, supportive AI chatbot. Reply in simple English with a few cute emojis.",
+              },
+              {
+                role: "user",
+                content: currentMessage,
+              },
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error?.message || "API request failed");
+      }
+
+      const reply =
+        data.choices?.[0]?.message?.content ||
+        "Sorry baby, I could not understand that 😢";
+
+      setMessages((prev) => [
+        ...prev,
+        { text: reply, sender: "bot" },
+      ]);
+    } catch (error) {
+      console.error(error);
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: "Error: " + error.message,
+          sender: "bot",
+        },
+      ]);
+    }
+
+    setLoading(false);
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <div className="chat-container">
+        <h1>💖 Baby Girl Chatbot</h1>
 
-      <div className="ticks"></div>
+        <div className="chat-box">
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={
+                msg.sender === "user" ? "user-message" : "bot-message"
+              }
+            >
+              {msg.text}
+            </div>
+          ))}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          {loading && <div className="bot-message">Typing... 💭</div>}
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <div className="input-area">
+          <input
+            type="text"
+            placeholder="Type a message..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") sendMessage();
+            }}
+          />
+
+          <button onClick={sendMessage} disabled={loading}>
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
