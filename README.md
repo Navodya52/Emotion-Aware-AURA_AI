@@ -41,29 +41,16 @@ AURA AI is a modern AI assistant built using **React, Firebase, Firestore and Op
 
 # 📸 Screenshots
 
-## Login
+![Login](src/assets/screenshots/login.png)
 
-![Login](assets/screenshots/login.png)
+![Home](src/assets/screenshots/home.png)
 
----
+![Emotion](src/assets/screenshots/emotion.png)
 
-## Home
+![Dark Mode](src/assets/screenshots/dark_mode.png)
 
-![Home](assets/screenshots/home.png)
 
----
 
-## Emotion Detection
-
-![Emotion](assets/screenshots/emotion.png)
-
----
-
-## Dark Mode
-
-![Dark](assets/screenshots/dark_mode.png)
-
----
 
 # 🚀 Installation
 
