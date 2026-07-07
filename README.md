@@ -1,108 +1,188 @@
 # 🌸 AURA AI
 
-> Emotion-Aware Personal AI Companion
+> **Emotion-Aware Personal AI Companion built with React, Firebase, Firestore and OpenRouter AI.**
 
-AURA AI is a modern AI assistant built using **React, Firebase, Firestore and OpenRouter AI**. Unlike traditional AI chatbots, AURA AI detects the user's emotional state and adapts its responses to provide a more personalized, supportive, and intelligent experience.
+AURA AI is an intelligent AI companion that provides personalized conversations by understanding user emotions. The application combines AI chat, image analysis, emotion detection, Google Authentication, and cloud storage to create a modern personal assistant.
 
 ---
 
-# ✨ Features
+## 🌐 Live Demo
+
+🔗 https://emotion-aware-aura-ai-nishadi.netlify.app
+
+---
+
+## ✨ Features
 
 - 🤖 AI Chat Assistant
 - 😊 Emotion-Aware Responses
+- 🧠 Mood Detection from Images
+- 🖼 AI Image Analysis
 - 🔐 Google Authentication
 - 💾 Firebase Firestore Database
-- 💬 Multiple Conversations
-- ➕ New Chat
-- 🔍 Search Chats
-- ✏ Rename Chat
-- 🗑 Delete Chat
-- 🌙 Dark Mode
+- 💬 Multiple Chat Conversations
+- ➕ Create New Chats
+- 🔍 Search Conversations
+- ✏ Rename Chats
+- 🗑 Delete Chats
 - 🎤 Voice Input
-- 🖼 Image Upload
-- 📄 Export PDF
-- 📝 Export Word
+- 🌙 Dark / Light Theme
+- 📄 Export Chat as PDF
+- 📝 Export Chat as Word Document
 - ⚙ Settings Panel
-- 📱 Responsive UI
+- 📱 Responsive User Interface
 
 ---
 
-# 🛠 Tech Stack
+## 🛠 Tech Stack
 
-- React
-- Vite
-- Firebase Authentication
-- Firestore
-- OpenRouter API
-- JavaScript
-- CSS3
+| Technology | Purpose |
+|------------|---------|
+| React | Frontend |
+| Vite | Build Tool |
+| Firebase Authentication | Google Login |
+| Cloud Firestore | Database |
+| OpenRouter API | AI Models |
+| DeepSeek Chat V3.1 | AI Chat |
+| Qwen 2.5 Vision | Image Analysis |
+| JavaScript | Programming Language |
+| CSS3 | Styling |
+| Netlify | Deployment |
+| GitHub | Version Control |
 
 ---
 
-# 📸 Screenshots
+## 📸 Screenshots
 
-![Login](src/assets/screenshots/login.png)
+### 🔐 Login
 
-![Home](src/assets/screenshots/home.png)
+<img src="screenshots/login.png" width="700">
 
-![Emotion](src/assets/screenshots/emotion.png)
+---
 
-![Dark Mode](src/assets/screenshots/dark_mode.png)
+### 💬 Chat Interface
 
+<img src="screenshots/chat.png" width="700">
 
+---
 
+### 😊 Emotion Detection
 
-# 🚀 Installation
+<img src="screenshots/emotion.png" width="700">
+
+---
+
+### 🌙 Dark Mode
+
+<img src="screenshots/darkmode.png" width="700">
+
+---
+
+## 🚀 Live Features
+
+- Google Sign In
+- AI Chat
+- Image Upload & Analysis
+- Emotion Detection
+- Voice Input
+- Chat History
+- Firestore Cloud Storage
+
+---
+
+## 🚀 Installation
+
+Clone the repository
 
 ```bash
-git clone https://github.com/Navodya52/AURA-AI.git
+git clone https://github.com/Navodya52/Emotion-Aware-AURA_AI.git
+```
 
-cd AURA-AI
+Go to the project
 
+```bash
+cd Emotion-Aware-AURA_AI
+```
+
+Install dependencies
+
+```bash
 npm install
-
-npm run dev
 ```
 
----
-
-# 📁 Folder Structure
-
-```
-src
- ├── components
- ├── hooks
- ├── pages
- ├── services
- ├── utils
- └── App.jsx
-```
-
----
-## Environment Variables
-
-Create a `.env` file in the project root.
-
-Example:
+Create a `.env` file
 
 ```env
 VITE_OPENROUTER_API_KEY=your_openrouter_api_key
 VITE_VISION_MODEL=qwen/qwen2.5-vl-72b-instruct:free
 ```
 
-# 👩‍💻 Developer
+Run the application
 
-**Nishadi Wickramaarachchi**
-
-Faculty of Computing
-
-University of Sri Jayewardenepura
-
-Sri Lanka
+```bash
+npm run dev
+```
 
 ---
 
+## 📁 Folder Structure
 
-# 📄 License
+```
+src/
+│
+├── hooks/
+├── pages/
+├── services/
+├── utils/
+├── App.jsx
+└── main.jsx
+```
 
-MIT
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file in the project root.
+
+```env
+VITE_OPENROUTER_API_KEY=your_openrouter_api_key
+VITE_VISION_MODEL=qwen/qwen2.5-vl-72b-instruct:free
+```
+
+A sample configuration is provided in:
+
+```
+.env.example
+```
+
+---
+
+## 📦 Deployment
+
+This project is deployed using **Netlify**.
+
+Every push to the **main** branch automatically triggers a new deployment.
+
+---
+
+## 👩‍💻 Developer
+
+**Nishadi Wickramaarachchi**
+
+🎓 Faculty of Computing  
+University of Sri Jayewardenepura  
+Sri Lanka
+
+GitHub: https://github.com/Navodya52
+
+---
+
+## ⭐ Support
+
+If you found this project useful, please consider giving it a ⭐ on GitHub.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
