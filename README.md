@@ -56,27 +56,25 @@ AURA AI is an intelligent AI companion that provides personalized conversations 
 
 ### 🔐 Login
 
-<img src="screenshots/login.png" width="700">
+![Login](src/assets/screenshots/login.png)
 
 ---
 
-### 💬 Chat Interface
+### 💬 Home
 
-<img src="screenshots/chat.png" width="700">
+![Home](src/assets/screenshots/home.png)
 
 ---
 
 ### 😊 Emotion Detection
 
-<img src="screenshots/emotion.png" width="700">
+![Emotion](src/assets/screenshots/emotion.png)
 
 ---
 
 ### 🌙 Dark Mode
 
-<img src="screenshots/darkmode.png" width="700">
-
----
+![Dark Mode](src/assets/screenshots/dark_mode.png)
 
 ## 🚀 Live Features
 
