@@ -79,6 +79,16 @@ src
 ```
 
 ---
+## Environment Variables
+
+Create a `.env` file in the project root.
+
+Example:
+
+```env
+VITE_OPENROUTER_API_KEY=your_openrouter_api_key
+VITE_VISION_MODEL=qwen/qwen2.5-vl-72b-instruct:free
+```
 
 # 👩‍💻 Developer
 
